@@ -153,8 +153,9 @@ def convert_tf_generator(tf_G):
     if 'resolution_w' in tf_kwargs:
         tf_kwargs.pop('resolution_w', None)
         tf_kwargs.pop('resolution_h', None)
+    if 'min_h' in tf_kwargs:
         tf_kwargs.pop('min_h', None)
-        tf_kwargs.pop('min_W', None)
+        tf_kwargs.pop('min_w', None)
     unknown_kwargs = list(set(tf_kwargs.keys()) - known_kwargs)
     if len(unknown_kwargs) > 0:
         raise ValueError('Unknown TensorFlow kwarg', unknown_kwargs[0])
@@ -254,8 +255,9 @@ def convert_tf_discriminator(tf_D):
     if 'resolution_w' in tf_kwargs:
         tf_kwargs.pop('resolution_w', None)
         tf_kwargs.pop('resolution_h', None)
+    if 'min_h' in tf_kwargs:
         tf_kwargs.pop('min_h', None)
-        tf_kwargs.pop('min_W', None)
+        tf_kwargs.pop('min_w', None)
     kwarg('structure')
     unknown_kwargs = list(set(tf_kwargs.keys()) - known_kwargs)
     if len(unknown_kwargs) > 0:
