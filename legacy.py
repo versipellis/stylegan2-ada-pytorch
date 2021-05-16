@@ -156,8 +156,11 @@ def convert_tf_generator(tf_G):
     if 'min_h' in tf_kwargs:
         tf_kwargs.pop('min_h', None)
         tf_kwargs.pop('min_w', None)
+    if 'res_log2' in tf_kwargs:
+        tf_kwargs.pop('res_log2', None)
     unknown_kwargs = list(set(tf_kwargs.keys()) - known_kwargs)
     if len(unknown_kwargs) > 0:
+        print(unknown_kwargs)
         raise ValueError('Unknown TensorFlow kwarg', unknown_kwargs[0])
 
     # Collect params.
@@ -258,9 +261,12 @@ def convert_tf_discriminator(tf_D):
     if 'min_h' in tf_kwargs:
         tf_kwargs.pop('min_h', None)
         tf_kwargs.pop('min_w', None)
+    if 'res_log2' in tf_kwargs:
+        tf_kwargs.pop('res_log2', None)
     kwarg('structure')
     unknown_kwargs = list(set(tf_kwargs.keys()) - known_kwargs)
     if len(unknown_kwargs) > 0:
+        print(unknown_kwargs)
         raise ValueError('Unknown TensorFlow kwarg', unknown_kwargs[0])
 
     # Collect params.
